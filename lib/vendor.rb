@@ -22,5 +22,4 @@ class Vendor
     end.sum
   end
 
-
 end
