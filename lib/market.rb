@@ -26,19 +26,23 @@ class Market
 
   ### not okay
 
-  # def total_inventory
-  #   require 'pry'; binding.pry
-  #   list_of_inventory = Hash.new(0)
+  def total_inventory
+    # require 'pry'; binding.pry
 
-  #   @vendors.each do |vendor|
-  #     vendor_w_product = vendors_that_sell(item)
-  #     qty = vendor_w_product.sum do |vendor| 
-  #       vendor.inventory[item]
-  #     list_of_inventory[item] = {quantity: qty, vendors: vendor_w_product}
-  #     end
-  #     list_of_inventory
-  #   end
-  # end
+    list_of_inventory = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.each do |k, v|
+        vendor_w_product = vendors_that_sell(k)
+        qty = vendor_w_product.sum do |vendor| 
+              vendor.inventory[k]
+        end 
+    
+        list_of_inventory[k] = {quantity: qty, vendors: vendor_w_product}
+        end
+  
+      end
+      list_of_inventory
+  end
     
   ##### okay
 
